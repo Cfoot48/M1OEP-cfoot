@@ -1,0 +1,65 @@
+#ifndef M1OEP_CFOOT_HAND_H
+#define M1OEP_CFOOT_HAND_H
+
+#endif //M1OEP_CFOOT_HAND_H
+class User{
+private:
+    int card1, card2;
+public:
+
+    //Constructors
+    User(){
+        card1 = nullptr;
+        card2 = nullptr;
+    }
+    User(int card1, int card2){
+        this->card1 = card1;
+        this->card2 = card2;
+    }
+
+    /*
+    * Gets card1 value
+    * Requires: nothing
+    * Modifies: nothing
+    * Effects: Returns card1 value
+    */
+    int getCard1 const{
+        return card1;
+    };
+    /*
+    * Gets card2 value
+    * Requires: nothing
+    * Modifies: nothing
+    * Effects: Returns card2 value
+    */
+    int getCard2 const{
+        return card2;
+    };
+
+    /*
+    * Set User Card1
+    * Requires: int card value
+    * Modifies: int card value
+    * Effects: Sets int user card1 value
+    */
+    void setCard1(int card);{
+        card = card1
+    }
+
+    /*
+    * Set User Card2
+    * Requires: int card value
+    * Modifies: int card value
+    * Effects: Sets int user card1 value
+    */
+    void setCard2(int card);{
+        card = card2
+    }
+
+
+
+
+
+
+
+};
