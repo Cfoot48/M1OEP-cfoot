@@ -64,7 +64,7 @@ public:
     }
 
 
-    int userTotal(){
+    int cardTotal(){
         int total = card1 + card2;
         return total;
     }
