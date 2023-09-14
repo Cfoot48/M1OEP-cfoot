@@ -2,16 +2,23 @@
 #define M1OEP_CFOOT_HAND_H
 
 #endif //M1OEP_CFOOT_HAND_H
+#include <fstream>
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <vector>
+
 class User{
 private:
     int card1, card2;
 public:
 
-    //Constructors
+    //Default constructor
     User(){
-        card1 = nullptr;
-        card2 = nullptr;
+        card1 = 0;
+        card2 = 0;
     }
+    //Alternate constructor
     User(int card1, int card2){
         this->card1 = card1;
         this->card2 = card2;
@@ -23,7 +30,7 @@ public:
     * Modifies: nothing
     * Effects: Returns card1 value
     */
-    int getCard1 const{
+    int getCard1() const{
         return card1;
     };
     /*
@@ -32,7 +39,7 @@ public:
     * Modifies: nothing
     * Effects: Returns card2 value
     */
-    int getCard2 const{
+    int getCard2() const{
         return card2;
     };
 
@@ -42,8 +49,8 @@ public:
     * Modifies: int card value
     * Effects: Sets int user card1 value
     */
-    void setCard1(int card);{
-        card = card1
+    void setCard1(int card){
+        card = card1;
     }
 
     /*
@@ -52,11 +59,15 @@ public:
     * Modifies: int card value
     * Effects: Sets int user card1 value
     */
-    void setCard2(int card);{
-        card = card2
+    void setCard2(int card){
+        card = card2;
     }
 
 
+    int userTotal(){
+        int total = card1 + card2;
+        return total;
+    }
 
 
 

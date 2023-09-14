@@ -7,11 +7,12 @@ using namespace std;
 #include <sstream>
 #include <string>
 #include <cstring>
-#include <User.h>
+#include "User.h"
 
-int main{
-    User user();
-    cout << "Welcome to Blackjack! Press 1 to learn " << endl;
-    printOptions;
+int main(){
+    srand(time(0));
+    User user((1 + (rand() % 11)),(1 + (rand() % 11)));
+    cout << "Welcome to Blackjack! Press 1 to learn or press 2 to play " << endl;
+    cout << user.userTotal();
     return 0;
 };
