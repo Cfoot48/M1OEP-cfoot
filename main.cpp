@@ -14,6 +14,7 @@ int main(){
     //declare variables
     int learn;
     bool validate1 = true;
+    srand(time(0));
     int money;
     cout << "Welcome to Blackjack! Press 1 to learn or press 2 to play, and at any point press 3 to end your game." << endl;
     while (validate1){
@@ -39,7 +40,6 @@ int main(){
         }
     }
     //initialize the hands that are being dealt
-    srand(time(0));
     User user((1 + (rand() % 11)),(1 + (rand() % 11)));
     Computer dealer((1 + (rand() % 11)),(1 + (rand() % 11)));
     cout << "The game is now beginning. You have been deal the cards: " << user.getCard1() << " and " << user.getCard2() << endl;
@@ -50,7 +50,36 @@ int main(){
         case 21:
             cout << "Congrats, you got blackjack! You win!" << endl;
         default:
-            cout << "Would you like to hit or stand?" << endl;
+            int decision1;
+            int decision2;
+            cout << "Would you like to hit or stand? Enter 1 for hit 2 for stand" << endl;
+            cin >> decision1;
+            if (decision1 == 1){
+                int hit1 = user.hit(user.cardTotal());
+                if (hit1 > 21)
+                    cout << " Unfortunately you bust, you went over 21 with a total of " << hit1 << endl;
+                else if (hit1 == 21)
+                    cout << " You win! You have 21!" << endl;
+                else{
+                    cout << " Would you like to hit or stand? Enter 1 for hit 2 for stand " << endl;
+                    cin >> decision2;
+                        if (decision2 == 1){
+                            int hit2 = user.hit(user.cardTotal());
+                            if (hit2 > 21)
+                                cout << "Unfortunately you bust, you went over 21 with a total of " << hit1 << endl;
+                            else if (hit2 == 21)
+                                cout << "You win! You have 21!" << endl;
+                            else
+                                cout << "UH OH" << endl;
+
+                        }
+                }
+            }
+
+
+
+
+
     }
 
 

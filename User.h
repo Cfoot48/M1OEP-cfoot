@@ -69,6 +69,15 @@ public:
         return total;
     }
 
+    int hit(int total) {
+        int rand_num = (1 + rand() % 11); // Generate a random number between 1 and 11
+        total = total + rand_num;
+        cout << "You drew the card " << rand_num << " Your new total is " << total;
+        return total;
+    }
+
+
+
 
 
 
