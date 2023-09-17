@@ -119,11 +119,19 @@ int main(){
                 }
         }
         cout << "You now have " << money << " Would you like to play again? 1 to replay 2 to quit" << endl;
-        cin >> replay;
-        if (replay == 2)
-            re = false;
-        else if (replay == 1) {
-            re = true;
+        while (validate3) {
+            cin >> replay;
+            if (replay == 2) {
+                re = false;
+                validate3 = false;
+            }
+            else if (replay == 1) {
+                re = true;
+                validate3 = false;
+            } else {
+                validate3 = true;
+                cout << "Please only enter 1 or 2" << endl;
+            }
         }
         if (money == 0){
             re = false;
