@@ -45,36 +45,38 @@ int main(){
     cout << "The game is now beginning. You have been deal the cards: " << user.getCard1() << " and " << user.getCard2() << endl;
     cout << "You have a total of " << user.cardTotal() << endl;
     cout << "The dealer was dealt: " << dealer.getCard1() << endl;
-    switch(user.cardTotal())
+    int userTotal = user.cardTotal();
+    switch(userTotal)
     {
         case 21:
             cout << "Congrats, you got blackjack! You win!" << endl;
         default:
             int decision1;
-            int decision2;
             cout << "Would you like to hit or stand? Enter 1 for hit 2 for stand" << endl;
-            cin >> decision1;
-            if (decision1 == 1){
-                int hit1 = user.hit(user.cardTotal());
-                if (hit1 > 21)
-                    cout << " Unfortunately you bust, you went over 21 with a total of " << hit1 << endl;
-                else if (hit1 == 21)
-                    cout << " You win! You have 21!" << endl;
-                else{
-                    cout << " Would you like to hit or stand? Enter 1 for hit 2 for stand " << endl;
-                    cin >> decision2;
-                        if (decision2 == 1){
-                            int hit2 = user.hit(user.cardTotal());
-                            if (hit2 > 21)
-                                cout << "Unfortunately you bust, you went over 21 with a total of " << hit1 << endl;
-                            else if (hit2 == 21)
-                                cout << "You win! You have 21!" << endl;
-                            else
-                                cout << "UH OH" << endl;
+            bool loop = true;
+            while (loop)
+            {
+                cin >> decision1;
+                if (decision1 == 1){
+                    int hit = user.hit(userTotal);
+                    userTotal = userTotal + hit;
+                    if (userTotal > 21) {
+                        cout << " Unfortunately you bust, you went over 21 with a total of " << userTotal << endl;
+                        loop = false;
+                    }
+                    else if (userTotal == 21) {
+                        cout << " You win! You have 21!" << endl;
+                        loop = false;
+                    }
+                    else {
+                        cout << " Would you like to hit or stand? Enter 1 for hit 2 for stand " << endl;
 
-                        }
+                    }
                 }
+                else
+                    loop = false;
             }
+
 
 
 
