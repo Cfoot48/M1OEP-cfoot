@@ -76,11 +76,18 @@ public:
         return total;
     }
 
+    int cardTotal(){
+        int total = card1 + card2;
+        return total;
+    }
+
     int hit(int total) {
-        int rand_num = (1 + rand() % 11); // Generate a random number between 1 and 11
-        total = total + rand_num;
-        cout << "You drew the card " << rand_num << " Your new total is " << total;
-        return rand_num;
+        while (total < 17) {
+            int rand_num = (1 + rand() % 11);
+            total = total + rand_num;
+            cout << "The dealer drew the card " << rand_num << " The dealer's new total is " << total << endl;
+        }
+        return total;
     }
 
 
