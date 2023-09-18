@@ -63,12 +63,23 @@ public:
         card = card2;
     }
 
-
+    /*
+    * Card Total
+    * Requires: nothing
+    * Modifies: total card value
+    * Effects: adds together both card numbers
+    */
     int cardTotal(){
         int total = card1 + card2;
         return total;
     }
 
+    /*
+    * Hit function
+    * Requires: int total value
+    * Modifies: total value
+    * Effects: adds a random number 1-11 to the total value
+    */
     int hit(int total) {
         int rand_num = (1 + rand() % 11); // Generate a random number between 1 and 11
         total = total + rand_num;

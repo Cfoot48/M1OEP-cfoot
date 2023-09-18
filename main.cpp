@@ -2,11 +2,8 @@
 // Kincaid Foot OEP 1
 //
 using namespace std;
-#include <ctype.h>
 #include <iostream>
-#include <sstream>
 #include <string>
-#include <cstring>
 #include <algorithm>
 #include <limits>
 #include "User.h"
@@ -75,7 +72,9 @@ int main(){
         switch (userTotal) {
             case 21:
                 cout << "Congrats, you got blackjack! You win!" << endl;
+                break;
             default:
+                //gets weather the player would like to hit or stand and runs through a loop until they choose to stand
                 int decision1;
                 cout << "Would you like to hit or stand? Enter 1 for hit 2 for stand" << endl;
                 bool loop = true;
@@ -95,6 +94,7 @@ int main(){
                             cout << " Would you like to hit or stand? Enter 1 for hit 2 for stand " << endl;
                         }
                     } else {
+                        //after standing this runs through the dealer's hits until they are at or over 21
                         cout << "The dealer's second card is " << dealer.getCard2()
                              << " This gives the dealer a total of " << dealerTotal << endl;
                         dealerTotal = dealer.hit(dealerTotal);
@@ -106,6 +106,7 @@ int main(){
                         loop = false;
                     }
                 }
+                //displays win message and adjusts money based on the bet size
                 if (userTotal > dealerTotal) {
                     cout << "You win!" << endl;
                     money = money + bet;
@@ -118,6 +119,7 @@ int main(){
                     money = money - bet;
                 }
         }
+        //Validated input to determine if the user would like to play again
         cout << "You now have " << money << " Would you like to play again? 1 to replay 2 to quit" << endl;
         while (validate3) {
             cin >> replay;
