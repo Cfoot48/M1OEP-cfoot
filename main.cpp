@@ -58,6 +58,11 @@ int main(){
                 cin.clear();
                 cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             }
+            else if (bet > money || bet < 0){
+                cout << "You can only bet between 1 and " << money << endl;
+                cin.clear();
+                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            }
             else
                 validate2 = false;
 
@@ -93,7 +98,7 @@ int main(){
                         } else {
                             cout << " Would you like to hit or stand? Enter 1 for hit 2 for stand " << endl;
                         }
-                    } else {
+                    } else if (decision1 == 2){
                         //after standing this runs through the dealer's hits until they are at or over 21
                         cout << "The dealer's second card is " << dealer.getCard2()
                              << " This gives the dealer a total of " << dealerTotal << endl;
@@ -102,9 +107,13 @@ int main(){
                             cout << "The dealer bust!" << endl;
                             dealerTotal = 0;
                         }
-
                         loop = false;
+                    }else{
+                        cout << "Please only enter 1 or 2" << endl;
+                        cin.clear();
+                        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                     }
+
                 }
                 //displays win message and adjusts money based on the bet size
                 if (userTotal > dealerTotal) {
@@ -120,25 +129,35 @@ int main(){
                 }
         }
         //Validated input to determine if the user would like to play again
-        cout << "You now have " << money << " Would you like to play again? 1 to replay 2 to quit" << endl;
+        cout << "You now have $" << money << " Would you like to play again? 1 to replay 2 to quit" << endl;
         while (validate3) {
             cin >> replay;
             if (replay == 2) {
                 re = false;
                 validate3 = false;
+                validate2 = true;
             }
             else if (replay == 1) {
                 re = true;
                 validate3 = false;
-            } else {
-                validate3 = true;
+                validate2 = true;
+            }
+            else if (cin.fail()) {
                 cout << "Please only enter 1 or 2" << endl;
+                cin.clear();
+                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            }
+            else {
+                cout << "Please only enter 1 or 2" << endl;
+                cin.clear();
+                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             }
         }
         if (money == 0){
             re = false;
             cout << "Unfortunately you are out of money and cannot play again" << endl;
         }
+        validate3 = true;
     }
     return 0;
 };
